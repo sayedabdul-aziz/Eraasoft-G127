@@ -1,4 +1,4 @@
-import 'package:counter_app/bmi/page/bmi_screen.dart';
+import 'package:chat_ui/chat/page/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BmiScreen(),
+      home: ChatScreen(),
     );
   }
 }
