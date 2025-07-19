@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:taskati/core/functions/navigations.dart';
 import 'package:taskati/core/services/local_storage.dart';
 import 'package:taskati/core/utils/text_styles.dart';
+import 'package:taskati/features/profile/profile_screen.dart';
 
 class HomeHeader extends StatelessWidget {
   const HomeHeader({
@@ -21,13 +23,21 @@ class HomeHeader extends StatelessWidget {
               'Hello, ${LocalStorage.getData(LocalStorage.name)}',
               style: TextStyles.getTitleTextStyle(),
             ),
-            Text('Have a nice day', style: TextStyles.getBodyTextStyle()),
+            Text('Have a nice day',
+                style: TextStyles.getBodyTextStyle(
+                  context,
+                )),
           ],
         ),
-        CircleAvatar(
-          radius: 25,
-          backgroundImage:
-              FileImage(File(LocalStorage.getData(LocalStorage.image))),
+        GestureDetector(
+          onTap: () {
+            context.pushTo(const ProfileScreen());
+          },
+          child: CircleAvatar(
+            radius: 25,
+            backgroundImage:
+                FileImage(File(LocalStorage.getData(LocalStorage.image))),
+          ),
         )
       ],
     );

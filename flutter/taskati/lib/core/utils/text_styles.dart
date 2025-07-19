@@ -14,15 +14,16 @@ class TextStyles {
     );
   }
 
-  static TextStyle getBodyTextStyle({
+  static TextStyle getBodyTextStyle(
+    BuildContext context, {
     double fontSize = 16,
     FontWeight fontWeight = FontWeight.normal,
-    Color color = AppColors.blackColor,
+    Color? color,
   }) {
     return TextStyle(
       fontSize: fontSize,
       fontWeight: fontWeight,
-      color: color,
+      color: color ?? Theme.of(context).colorScheme.onSurface,
     );
   }
 

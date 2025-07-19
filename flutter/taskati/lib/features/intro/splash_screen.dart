@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Lottie.asset(AppImages.logo, width: 250),
             Text(
               'Taskati',
-              style: TextStyles.getBodyTextStyle(
+              style: TextStyles.getBodyTextStyle(context,
                   fontSize: 22, fontWeight: FontWeight.w500),
             ),
             const Gap(15),

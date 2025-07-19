@@ -71,13 +71,14 @@ class _UploadScreenState extends State<UploadScreen> {
                             backgroundColor: AppColors.primaryColor,
                             backgroundImage: AssetImage(AppImages.user),
                           ),
-                    const Positioned(
+                    Positioned(
                       bottom: 0,
                       right: 0,
                       child: CircleAvatar(
                         radius: 17,
-                        backgroundColor: AppColors.whiteColor,
-                        child: Icon(
+                        backgroundColor:
+                            Theme.of(context).scaffoldBackgroundColor,
+                        child: const Icon(
                           Icons.camera_alt,
                           color: AppColors.primaryColor,
                         ),

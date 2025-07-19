@@ -30,7 +30,8 @@ class MainButton extends StatelessWidget {
           ),
           child: Text(
             title,
-            style: TextStyles.getBodyTextStyle(color: AppColors.whiteColor),
+            style: TextStyles.getBodyTextStyle(context,
+                color: AppColors.whiteColor),
           )),
     );
   }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "34099966774",
+    "project_id": "se7ety-2e043",
+    "storage_bucket": "se7ety-2e043.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34099966774:android:5182212cb7213b96e4f997",
+        "android_client_info": {
+          "package_name": "com.eraasoft.se7ety"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBRdmv6TFeYh9bWYhk3UuQv6edUr5Dum1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
