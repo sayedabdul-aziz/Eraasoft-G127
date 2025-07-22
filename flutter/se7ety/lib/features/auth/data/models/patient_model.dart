@@ -42,4 +42,16 @@ class PatientModel {
     data['uid'] = uid;
     return data;
   }
+
+  Map<String, dynamic> toUpdateData() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (name != null) data['name'] = name;
+    if (image != null) data['image'] = image;
+    if (age != null) data['age'] = age;
+    if (email != null) data['email'] = email;
+    if (phone != null) data['phone'] = phone;
+    if (bio != null) data['bio'] = bio;
+    if (city != null) data['city'] = city;
+    return data;
+  }
 }

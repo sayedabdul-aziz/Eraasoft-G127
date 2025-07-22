@@ -96,6 +96,7 @@ class _HomePageState extends State<PatientHomeScreen> {
                   textInputAction: TextInputAction.search,
                   controller: _doctorName,
                   cursorColor: AppColors.primaryColor,
+                  onTapOutside: (_) => FocusScope.of(context).unfocus(),
                   decoration: InputDecoration(
                     hintStyle: getBodyStyle(),
                     filled: true,

@@ -46,6 +46,7 @@ class SharedPref {
   }
 
   static Future<void> clear() async {
+    await prefs.remove(kUserId);
     await prefs.clear();
   }
 

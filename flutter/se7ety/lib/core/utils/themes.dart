@@ -8,13 +8,14 @@ class AppThemes {
     scaffoldBackgroundColor: Colors.white,
     fontFamily: AppFonts.cairoFamily,
     appBarTheme: AppBarTheme(
+      foregroundColor: AppColors.white,
       centerTitle: true,
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.primaryColor,
       surfaceTintColor: Colors.transparent,
       titleTextStyle: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w600,
-        color: AppColors.darkColor,
+        color: AppColors.white,
         fontFamily: AppFonts.cairoFamily,
       ),
     ),
