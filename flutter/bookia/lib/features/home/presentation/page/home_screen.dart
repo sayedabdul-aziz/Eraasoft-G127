@@ -1,5 +1,5 @@
 import 'package:bookia/core/constants/app_assets.dart';
-import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
+import 'package:bookia/features/home/presentation/cubit/home_bloc.dart';
 import 'package:bookia/features/home/presentation/cubit/home_state.dart';
 import 'package:bookia/features/home/presentation/widgets/best_seller_list.dart';
 import 'package:bookia/features/home/presentation/widgets/home_slider.dart';
@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit()..getHomeData(),
+      create: (context) => HomeBloc(),
       child: Scaffold(
         appBar: AppBar(
           title: Row(
@@ -27,9 +27,9 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        body: BlocBuilder<HomeCubit, HomeState>(
+        body: BlocBuilder<HomeBloc, HomeState>(
           builder: (context, state) {
-            var cubit = context.read<HomeCubit>();
+            var cubit = context.read<HomeBloc>();
             return SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -5,7 +5,8 @@ import 'package:bookia/core/constants/app_assets.dart';
 import 'package:bookia/core/utils/app_colors.dart';
 import 'package:bookia/core/utils/text_styles.dart';
 import 'package:bookia/features/home/data/model/best_seller_response/product.dart';
-import 'package:bookia/features/home/presentation/cubit/home_cubit.dart';
+import 'package:bookia/features/home/presentation/cubit/home_bloc.dart';
+import 'package:bookia/features/home/presentation/cubit/home_event.dart';
 import 'package:bookia/features/home/presentation/cubit/home_state.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +22,8 @@ class BookDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeCubit(),
-      child: BlocConsumer<HomeCubit, HomeState>(
+      create: (context) => HomeBloc(),
+      child: BlocConsumer<HomeBloc, HomeState>(
         listener: (context, state) {
           if (state is AddedToWishlistCartState) {
             context.pop();
@@ -38,7 +39,9 @@ class BookDetailsScreen extends StatelessWidget {
           appBar: MainAppBarWithBack(
             action: IconButton(
               onPressed: () {
-                context.read<HomeCubit>().addToWishlist(product.id ?? 0);
+                context.read<HomeBloc>().add(
+                  AddToWishlistEvent(productId: product.id ?? 0),
+                );
               },
               icon: SvgPicture.asset(AppAssets.bookmarkSvg),
             ),
@@ -98,7 +101,9 @@ class BookDetailsScreen extends StatelessWidget {
                       bgColor: AppColors.darkColor,
                       text: 'Add To Cart',
                       onPressed: () {
-                        context.read<HomeCubit>().addToCart(product.id ?? 0);
+                        context.read<HomeBloc>().add(
+                          AddToCartEvent(productId: product.id ?? 0),
+                        );
                       },
                     ),
                   ),

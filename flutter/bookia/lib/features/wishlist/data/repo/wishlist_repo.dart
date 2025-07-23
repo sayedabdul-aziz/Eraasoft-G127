@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bookia/core/constants/app_constants.dart';
 import 'package:bookia/core/services/dio_provider.dart';
 import 'package:bookia/core/services/shared_pref.dart';
@@ -15,7 +17,8 @@ class WishlistRepo {
       } else {
         return null;
       }
-    } on Exception catch (_) {
+    } on Exception catch (e) {
+      log('error in get wishlist: $e');
       return null;
     }
   }

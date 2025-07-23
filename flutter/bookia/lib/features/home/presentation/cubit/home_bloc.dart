@@ -4,18 +4,31 @@ import 'package:bookia/features/home/data/model/best_seller_response/product.dar
 import 'package:bookia/features/home/data/model/slider_response/slider.dart';
 import 'package:bookia/features/home/data/model/slider_response/slider_response.dart';
 import 'package:bookia/features/home/data/repo/home_repo.dart';
+import 'package:bookia/features/home/presentation/cubit/home_event.dart';
 import 'package:bookia/features/home/presentation/cubit/home_state.dart';
 import 'package:bookia/features/wishlist/data/repo/wishlist_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitial());
+class HomeBloc extends Bloc<HomeEvent, HomeState> {
+  HomeBloc() : super(HomeInitial()) {
+    on((event, emit) async {
+      if (event is GetHomeDataEvent) {
+        await getHomeData(emit);
+      } else if (event is AddToCartEvent) {
+        await addToCart(event.productId, emit);
+      } else if (event is AddToWishlistEvent) {
+        await addToWishlist(event.productId, emit);
+      }
+    });
+
+    add(GetHomeDataEvent());
+  }
 
   List<SliderModel> sliders = [];
 
   List<Product> bestSellers = [];
 
-  getHomeData() async {
+  Future<void> getHomeData(Emitter<HomeState> emit) async {
     emit(HomeLoadingState());
     // call 2 apis in parallel
     try {
@@ -34,7 +47,7 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  Future<void> addToWishlist(int productId) async {
+  Future<void> addToWishlist(int productId, Emitter<HomeState> emit) async {
     emit(HomeLoadingState());
     try {
       var response = await WishlistRepo.addToWishlist(productId);
@@ -48,7 +61,7 @@ class HomeCubit extends Cubit<HomeState> {
     }
   }
 
-  Future<void> addToCart(int productId) async {
+  Future<void> addToCart(int productId, Emitter<HomeState> emit) async {
     emit(HomeLoadingState());
     try {
       var response = await CartRepo.addToCart(productId);

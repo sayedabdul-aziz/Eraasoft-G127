@@ -14,7 +14,6 @@ class WishlistCubit extends Cubit<WishlistState> {
     WishlistRepo.getWishlist().then((value) {
       if (value != null) {
         wishlistResponse = value;
-
         emit(WishlistSuccessState());
       } else {
         emit(WishlistErrorState());
